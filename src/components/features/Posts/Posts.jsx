@@ -12,10 +12,21 @@ export default function Posts() {
   function handleShowPost(id) {
     navigate(`/post/${id}`);
   }
+  function handelAddPost() {
+    navigate(`/post/add`);
+  }
 
   return (
     <Container>
-      <Title>All posts</Title>
+      <Row className='align-items-center mb-4'>
+        <Col>
+          <Title>All posts</Title>
+        </Col>
+        <Col className='text-end'>
+          <Buttons onClick={handelAddPost}>Add post</Buttons>
+        </Col>
+      </Row>
+
       <Row className='d-flex flex-wrap justify-content-start'>
         {posts.map((post) => (
           <Col key={post.id} xs={12} sm={6} md={4} className='mb-4'>
