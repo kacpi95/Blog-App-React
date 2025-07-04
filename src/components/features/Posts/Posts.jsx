@@ -1,11 +1,17 @@
-import { Container, Card, Col, Row, Button } from 'react-bootstrap';
+import { Container, Card, Col, Row } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { getAllPosts } from '../../../redux/postsRedux/';
 import Buttons from '../../common/Button/Buttons';
 import Title from '../../common/Title/Title';
+import { useNavigate } from 'react-router-dom';
 
 export default function Posts() {
   const posts = useSelector(getAllPosts);
+  const navigate = useNavigate();
+
+  function handleShowPost(id) {
+    navigate(`/post/${id}`);
+  }
 
   return (
     <Container>
@@ -24,7 +30,9 @@ export default function Posts() {
                 </Card.Subtitle>
                 <Card.Text>{post.shortDescription}</Card.Text>
               </Card.Body>
-              <Buttons>Read more</Buttons>
+              <Buttons onClick={() => handleShowPost(post.id)}>
+                Read more
+              </Buttons>
             </Card>
           </Col>
         ))}
