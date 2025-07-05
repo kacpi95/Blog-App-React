@@ -1,3 +1,5 @@
+import PostForm from '../../features/PostForm/PostForm';
+
 export default function EditScreen() {
-  return <div>EditScreen</div>;
+  return <PostForm />;
 }

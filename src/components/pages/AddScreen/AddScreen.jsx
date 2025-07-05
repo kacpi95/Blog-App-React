@@ -1,10 +1,16 @@
-import { Container } from 'react-bootstrap';
-import Title from '../../common/Title/Title';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addPost } from '../../../redux/postsRedux';
+import PostForm from '../../features/PostForm/PostForm';
+
 export default function AddScreen() {
-  return (
-    <Container>
-      <Title>Add post</Title>
-      
-    </Container>
-  );
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleSubmit = (post) => {
+    dispatch(addPost(post));
+    navigate('/');
+  };
+
+  return <PostForm action={handleSubmit} actionText='Add post' />;
 }
