@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { removePost } from '../../../redux/postsRedux';
 import { useState } from 'react';
+import { dateToStr } from '../../../utils/dateToStr';
 
 export default function Post() {
   const [showModal, setShowModal] = useState(false);
@@ -43,9 +44,10 @@ export default function Post() {
             <strong>Author:</strong> {post.author}
           </Card.Text>
           <Card.Subtitle className='mb-2'>
-            <strong>Published:</strong> {post.publishedDate}
+            <strong>Published:</strong>
+            {dateToStr(new Date(post.publishedDate))}
           </Card.Subtitle>
-          <Card.Text>
+          <Card.Text as='div'>
             <div dangerouslySetInnerHTML={{ __html: post.content }} />
           </Card.Text>
           <div className='d-flex justify-content-end mt-3'>

@@ -4,6 +4,7 @@ import { getAllPosts } from '../../../redux/postsRedux/';
 import Buttons from '../../common/Button/Buttons';
 import Title from '../../common/Title/Title';
 import { useNavigate } from 'react-router-dom';
+import { dateToStr } from '../../../utils/dateToStr';
 
 export default function Posts() {
   const posts = useSelector(getAllPosts);
@@ -37,7 +38,8 @@ export default function Posts() {
                   <strong>Author:</strong> {post.author}
                 </Card.Text>
                 <Card.Subtitle className='mb-2'>
-                  <strong>Published</strong> {post.publishedDate}
+                  <strong>Published</strong>{' '}
+                  {dateToStr(new Date(post.publishedDate))}
                 </Card.Subtitle>
                 <Card.Text>{post.shortDescription}</Card.Text>
               </Card.Body>
