@@ -3,11 +3,16 @@ import Title from '../../common/Title/Title';
 import { useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 export default function PostForm({ action, actionText, ...props }) {
   const [title, setTitle] = useState(props.title || '');
   const [author, setAuthor] = useState(props.author || '');
-  const [publishedDate, setPublishedDate] = useState(props.publishedDate || '');
+  const [publishedDate, setPublishedDate] = useState(
+    props.publishedDate ? new Date(props.publishedDate) : null
+  );
+
   const [shortDescription, setShortDescription] = useState(
     props.shortDescription || ''
   );
@@ -42,13 +47,15 @@ export default function PostForm({ action, actionText, ...props }) {
           />
         </Form.Group>
 
-        <Form.Group className='mb-3' controlId='publishedDate'>
-          <Form.Label>publishedDate</Form.Label>
-          <Form.Control
-            type='text'
-            value={publishedDate}
-            onChange={(e) => setPublishedDate(e.target.value)}
-            placeholder='Enter publication date'
+        <Form.Group
+          className='mb-3 d-flex flex-column'
+          controlId='publishedDate'
+        >
+          <Form.Label>PublishedDate</Form.Label>
+          <DatePicker
+            selected={publishedDate}
+            onChange={(date) => setPublishedDate(date)}
+            dateFormat='MM/dd/yyyy'
           />
         </Form.Group>
 
