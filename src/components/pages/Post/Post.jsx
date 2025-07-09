@@ -45,7 +45,9 @@ export default function Post() {
           <Card.Subtitle className='mb-2'>
             <strong>Published:</strong> {post.publishedDate}
           </Card.Subtitle>
-          <Card.Text>{post.content}</Card.Text>
+          <Card.Text>
+            <div dangerouslySetInnerHTML={{ __html: post.content }} />
+          </Card.Text>
           <div className='d-flex justify-content-end mt-3'>
             <ButtonGroup size='sm'>
               <Button
