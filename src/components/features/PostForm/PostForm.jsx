@@ -1,6 +1,5 @@
 import { Container, Button, Form } from 'react-bootstrap';
 import Title from '../../common/Title/Title';
-
 import { useState } from 'react';
 
 export default function PostForm({ action, actionText, ...props }) {
