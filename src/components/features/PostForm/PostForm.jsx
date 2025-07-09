@@ -1,7 +1,7 @@
 import { Container, Button, Form } from 'react-bootstrap';
 import Title from '../../common/Title/Title';
 import { useState } from 'react';
-import ReactQuill from 'react-quill';
+import ReactQuill from 'react-quill-new';
 import 'react-quill/dist/quill.snow.css';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
